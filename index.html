@@ -17,7 +17,18 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th class='col-xs-3' id="nameInput">name</th>
+          <th class='col-xs-3' id="nameInput">
+            name
+            <a class='sort sortUp' href="#!">
+              <i class='fa fa-caret-up'></i>
+            </a>
+            <a class='sort sortDown' href="#!">
+              <i class='fa fa-caret-down'></i>
+            </a>
+            <a class='sort sortNone' href="#!">
+              <i class='fa fa-times'></i>
+            </a>
+          </th>
           <th class='col-xs-2' id="emailInput">email</th>
           <th class='col-xs-2' id="phoneInput">phone #</th>
           <th class='col-xs-4' id="addressInput">address</th>
@@ -50,7 +61,7 @@
             email:<br>
             <input type="email" id="email"> <br>
             phone: <br>
-            <input type="tel" id="phone"> <br>
+            <input type="text" id="phone"> <br>
             address: <br>
             <textarea class="form-control" rows="3" id="address"></textarea><br>
             <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->

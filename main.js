@@ -3,14 +3,16 @@
 
   let contacts = LS.contacts ? JSON.parse(LS.contacts) : [];
   let editIndex;
+  let toggleSort = 0;
 
   let init = () => {
 
     $('#add-btn').click(addContact);
     $('#list').on('click','.remove',removeContact);
     $('#list').on('click','.edit', populateModal);
-    $('#saveContact').click(saveModalData)
-    $('')
+    $('#saveContact').click(saveModalData);
+    $('#nameInput').click(sortNames);
+    $('.sortNone').click(unSort);
 
     drawContacts();
 
@@ -18,7 +20,7 @@
 
   let addContact = (e) => {
     editIndex = contacts.length;
-    $modalForm = $('.modal-body')
+    let $modalForm = $('.modal-body')
     $modalForm.find('#name').val('');
     $modalForm.find('#phone').val('');
     $modalForm.find('#email').val('');
@@ -55,10 +57,42 @@
 
   let saveModalData = () => {
     let entry = makeEntry($('.modal-body'));
+    entry.timeStamp = Date.now();
     contacts.splice(editIndex,1,entry);
     drawContacts();
     storeContacts();
   }
+
+  let sortNames = () => { 
+    $('.sortNone').show();
+    if (toggleSort){
+      contacts = contacts.sort(function(a,b){
+        return a.name.toLowerCase() > b.name.toLowerCase();
+      })
+      toggleSort = false;
+      $('.sortUp').hide();
+      $('.sortDown').show();
+    } else {
+      contacts = contacts.sort(function(a,b){
+        return a.name.toLowerCase() < b.name.toLowerCase();
+      })
+      toggleSort = true;
+      $('.sortUp').show();
+      $('.sortDown').hide();
+    }
+    drawContacts();
+    storeContacts();
+  }
+
+  let unSort = (e) => {
+    e.stopPropagation();
+    $('.sort').hide();
+    contacts = contacts.sort(function(a,b){
+      return a.timeStamp > b.timeStamp;
+    })
+    drawContacts();
+    storeContacts();
+  };
 
   let makeEntry = ($form) => {
     let name = $form.find('#name').val();

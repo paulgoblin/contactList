@@ -37,3 +37,14 @@ thead {
   padding-right:1em;
   float:right;
 }
+
+.sort{
+  display: none;
+  padding: 0 0.5em;
+}
+.sortNone {
+  float:right;
+}
+
+
+
