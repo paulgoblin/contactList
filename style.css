@@ -1,0 +1,39 @@
+#sample {
+  display: none;
+}
+
+#add-btn {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  float:right;
+}
+
+textarea#address {
+  max-width: 20em;
+}
+
+input {
+  width: 20em;
+}
+
+.modal-dialog {
+  margin: auto;
+}
+
+#formModal .modal-dialog {
+  max-width: 30em;
+}
+
+thead {
+  display:none;
+}
+
+.edit > i {
+  padding-left:1em;
+  float:left;
+}
+
+.remove > i {
+  padding-right:1em;
+  float:right;
+}
